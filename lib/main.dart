@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Text('ЦЕЛЬ: ', style: _style),
                                 Text(item.task, style: _style),
-                                SizedBox(width: 30,),
+                                SizedBox(width: 10,),
                                 Text('${item.money.toString()}/', style: _style),
                                 Text(item.sum.toString(), style: _style),
                                 Text(' ${item.currency}', style: _style),
