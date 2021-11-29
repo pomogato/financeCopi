@@ -17,12 +17,14 @@ class TodoItem extends Model {
   int DateLastMonth;
   int DateLastDay;
   int platesh;
+  int itemId;
+  int historyTrue;
 
 
 
   TodoItem({ this.id, this.task, this.sum, this.currency,
     this.money,this.DateNowYear,this.DateNowMonth,this.DateNowDay,
-  this.DateLastYear,this.DateLastMonth,this.DateLastDay,this.platesh});
+  this.DateLastYear,this.DateLastMonth,this.DateLastDay,this.platesh,this.itemId,this.historyTrue});
 
   Map<String, dynamic> toMap() {
 
@@ -37,7 +39,9 @@ class TodoItem extends Model {
       'DateLastYear' : DateLastYear,
       'DateLastMonth' : DateLastMonth,
       'DateLastDay' : DateLastDay,
-      'platesh' : platesh
+      'platesh' : platesh,
+      'itemId'  : itemId,
+      'historyTrue' : historyTrue
     };
 
     if (id != null) { map['id'] = id; }
@@ -58,7 +62,9 @@ class TodoItem extends Model {
         DateLastYear: map['DateLastYear'],
         DateLastMonth: map['DateLastMonth'],
         DateLastDay: map['DateLastDay'],
-        platesh: map['platesh']
+        platesh: map['platesh'],
+        itemId: map['itemId'],
+        historyTrue: map['historyTrue']
     );
   }
 }

@@ -28,6 +28,59 @@ class _CardGoalState extends State<CardGoal> {
   int procent;
   int _summa;
   int _money_ost;
+  DateTime DateNow = DateTime.now();
+  List<TodoItem> tasks = [];
+  List<Widget> get _items => tasks.map((item) => format(item)).toList();
+
+  Widget  format(TodoItem item) {
+    if (item.historyTrue == 0)return SizedBox();
+    else{
+      if(item.itemId!=widget.item.id)return SizedBox();
+      else{
+      print('histiry');
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+      child: Container(
+
+        height: 50,
+        width: double.infinity,
+        child: Row(
+          children: [
+            SizedBox(width: 10,),
+            Text("${item.task}",style: styleText),
+            SizedBox(width: 15,),
+            Text("${item.platesh}",style: styleText),
+            SizedBox(width: 15,),
+            Text("${item.currency}",style: styleText),
+            SizedBox(width: 15,),
+            Text('${item.DateNowDay}/${item
+                .DateNowMonth}/${item.DateNowYear}',
+              style: TextStyle(fontSize: 14,color: Colors.white60),),
+          ],
+        ),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(0, 255, 0, 0.1),
+          borderRadius: BorderRadius.circular(10),),
+      ),
+    );}
+  }
+  }
+
+
+  @override
+  void initState() {
+
+
+    super.initState();
+    refresh();
+  }
+
+  void refresh() async {
+    print('refresh');
+    List<Map<String, dynamic>> _results = await DB.query(TodoItem.table);
+    tasks = _results.map((item) => TodoItem.fromMap(item)).toList();
+    setState(() { });
+  }
 
 
 
@@ -48,17 +101,36 @@ class _CardGoalState extends State<CardGoal> {
         DateLastYear: widget.item.DateLastYear,
         DateLastMonth: widget.item.DateLastMonth,
         DateLastDay: widget.item.DateLastDay,
-        platesh: widget.item.platesh
+        platesh: widget.item.platesh,
+        itemId: widget.item.itemId,
+        historyTrue: 0,
     );
 
    await DB.update(TodoItem.table, item);
 
   }
 
+  void _save() async {
 
-  @override
-  void initState() {
-    super.initState();
+
+    TodoItem item = TodoItem(
+        task: 'Пополнение',
+        sum: 0,
+        currency: widget.item.currency,
+        money: 0,
+        DateNowYear: DateNow.year.toInt(),
+        DateNowMonth: DateNow.month.toInt(),
+        DateNowDay: DateNow.day.toInt(),
+        DateLastYear: 0,
+        DateLastMonth: 0,
+        DateLastDay: 0,
+        platesh: _money_dob,
+        itemId: widget.item.id,
+        historyTrue: 1);
+
+
+    await DB.insert(TodoItem.table, item);
+
   }
 
   void _progress(){
@@ -120,6 +192,7 @@ class _CardGoalState extends State<CardGoal> {
 
       ),
     body:  Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 25,),
 
@@ -252,6 +325,8 @@ class _CardGoalState extends State<CardGoal> {
                 }
                   _add();
                   _progress();
+                  _save();
+                  refresh();
 
               }),
 
@@ -261,6 +336,26 @@ class _CardGoalState extends State<CardGoal> {
             )
           ],
         ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+          child: Container(
+            width: double.infinity,
+            height: 1,color: Colors.white10,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Text("История операций:",style:
+          TextStyle(fontSize: 18,color: Colors.white60)),
+        ),
+
+          Expanded(
+            child:
+            ListView(
+              shrinkWrap: true,
+              children: _items ),)
+
+
 
       ],
     ),

@@ -110,7 +110,10 @@ class _NakopitState extends State<Nakopit> {
           DateLastYear: DateLast.year.toInt(),
           DateLastMonth: DateLast.month.toInt(),
           DateLastDay: DateLast.day.toInt(),
-          platesh: _platesh);
+          platesh: _platesh,
+          itemId: 111111,
+          historyTrue: 0);
+
 
       await DB.insert(TodoItem.table, item);
 

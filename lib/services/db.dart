@@ -6,7 +6,7 @@ abstract class DB {
 
   static Database _db;
 
-  static int get _version => 1;
+  static int get _version => 2;
 
   static Future<void> init() async {
 
@@ -25,7 +25,7 @@ abstract class DB {
       await db.execute('CREATE TABLE todo_items (id INTEGER PRIMARY KEY NOT NULL, task STRING, '
           'sum INTEGER, currency STRING, money INTEGER, DateNowYear INTEGER, '
           'DateNowMonth INTEGER, DateNowDay INTEGER, DateLastYear INTEGER, DateLastMonth INTEGER, '
-          'DateLastDay INTEGER, platesh INTEGER)');
+          'DateLastDay INTEGER, platesh INTEGER, itemId INTEGER, historyTrue INTEGER )');
 
   static Future<List<Map<String, dynamic>>> query(String table) async => _db.query(table);
 
