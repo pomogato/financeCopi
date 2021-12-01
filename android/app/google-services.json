@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "28363813644",
+    "project_id": "financecopi",
+    "storage_bucket": "financecopi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28363813644:android:9f91a11f09a30f101b4f29",
+        "android_client_info": {
+          "package_name": "com.example.finance_copi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28363813644-bn9qe6nbjr9p54jtm2j10umjdsqneltt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtIf1kQhf8usGIxPrSTuZ98dYg5XmW8wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28363813644-bn9qe6nbjr9p54jtm2j10umjdsqneltt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
