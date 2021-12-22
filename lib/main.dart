@@ -235,18 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                   child:
                   Text("ЦЕЛИ",style: TextStyle(fontSize: 14,color: Colors.white60,fontWeight: FontWeight.bold))),
-              
-            //  TextButton(
-           //       onPressed:
-            //         () => Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => Nakopit(),
-            //          )).then((_) {
-            //        refresh();
-            //      }),
-            //     child:
-           //      Text("Добавить +",style: TextStyle(fontSize: 14,color: Colors.white60,fontWeight: FontWeight.bold))),
+
             ],
           ),
         ),
